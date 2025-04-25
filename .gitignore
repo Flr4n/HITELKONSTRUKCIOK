@@ -1,0 +1,24 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+*.dbmdl
+*.pdb
+*.cache
+*.log
+*.sdf
+*.sqlite
+
+# Other
+*.DS_Store
+*.swp
+*.tmp
+*.bak
