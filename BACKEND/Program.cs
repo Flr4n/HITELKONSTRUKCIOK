@@ -1,10 +1,10 @@
-<<<<<<< HEAD
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.UseCors(policy =>
     policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 );
+
 app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
 {
     var evek = new[] { 5, 10, 15, 20, 25, 30 };
@@ -27,8 +27,4 @@ app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
 });
 
 app.Run();
-=======
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
->>>>>>> d507bf86ce4a8ea3cfbd646ff45df1ff274b1b95
+
