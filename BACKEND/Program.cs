@@ -1,11 +1,11 @@
 using System.Text.Json;
 var builder = WebApplication.CreateBuilder(args);
 
-// Helyes CORS konfiguráció
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
-        policy.WithOrigins("http://127.0.0.1:5500") // Ez a Live Server origin
+        policy.WithOrigins("http://127.0.0.1:5500","http://localhost:3000")
               .AllowAnyMethod()
               .AllowAnyHeader());
 });
