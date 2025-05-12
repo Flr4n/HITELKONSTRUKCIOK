@@ -1,9 +1,19 @@
 var builder = WebApplication.CreateBuilder(args);
+
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecific", builder =>
+        builder.WithOrigins("http://localhost:3000") 
+               .AllowAnyMethod()  
+               .AllowAnyHeader()); 
+});
+
+builder.Services.AddRazorPages();
+
 var app = builder.Build();
 
-app.UseCors(policy =>
-    policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-);
+app.UseCors("AllowSpecific");
 
 app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
 {
@@ -27,4 +37,3 @@ app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
 });
 
 app.Run();
-
