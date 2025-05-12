@@ -18,8 +18,8 @@ document.getElementById('kalkulatorForm').addEventListener('submit', async (e) =
 
         data.forEach(ajanlat => {
             let szin = 'bg-success text-white';
-            if (ajanlat.HaviTorleszto > 500000) szin = 'bg-danger text-white';
-            else if (ajanlat.HaviTorleszto > 150000) szin = 'bg-warning';
+            if (ajanlat.HaviTorleszto > 600000) szin = 'bg-danger text-white';
+            else if (ajanlat.HaviTorleszto > 250000) szin = 'bg-warning';
 
             const card = `
                 <div class="col-md-4 mb-4">

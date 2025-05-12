@@ -15,7 +15,6 @@ var app = builder.Build();
 // Ez fontos: ez aktiválja a CORS-t
 app.UseCors("AllowFrontend");
 
-// Tesztelhetõ endpoint
 app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
 {
     var evek = new[] { 5, 10, 15, 20, 25, 30 };
