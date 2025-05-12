@@ -5,3 +5,22 @@ body {
         background-repeat: no-repeat;
         min-height: 100vh;
 }
+.card {
+    background-color: #FFFFE0; 
+    border: 2px solid #FFD700; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.card:hover {
+    background-color: #FFFACD;
+    border-color: #FFD700;
+}
+
+.card-title {
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+}
