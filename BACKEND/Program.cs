@@ -1,20 +1,21 @@
+using System.Text.Json;
 var builder = WebApplication.CreateBuilder(args);
 
-// Add CORS policy
+// Helyes CORS konfiguráció
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecific", builder =>
-        builder.WithOrigins("http://localhost:3000") 
-               .AllowAnyMethod()  
-               .AllowAnyHeader()); 
+    options.AddPolicy("AllowFrontend", policy =>
+        policy.WithOrigins("http://127.0.0.1:5500") // Ez a Live Server origin
+              .AllowAnyMethod()
+              .AllowAnyHeader());
 });
-
-builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-app.UseCors("AllowSpecific");
+// Ez fontos: ez aktiválja a CORS-t
+app.UseCors("AllowFrontend");
 
+// Tesztelhetõ endpoint
 app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
 {
     var evek = new[] { 5, 10, 15, 20, 25, 30 };
@@ -28,12 +29,13 @@ app.MapGet("/api/ajanlatok", (double osszeg, double kamat) =>
         return new
         {
             Ev = ev,
-            HaviTorleszto = Math.Round(havi, 0),
-            Visszafizetendo = Math.Round(visszafizet, 0)
+            HaviTorleszto = Math.Round(havi),
+            Visszafizetendo = Math.Round(visszafizet)
         };
     });
 
-    return Results.Json(ajanlatok);
+    return Results.Json(ajanlatok, new JsonSerializerOptions { PropertyNamingPolicy = null });
+
 });
 
 app.Run();

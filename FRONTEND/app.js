@@ -4,13 +4,12 @@ document.getElementById('kalkulatorForm').addEventListener('submit', async (e) =
     const osszeg = document.getElementById('osszeg').value;
     const kamat = document.getElementById('kamat').value;
 
-    const response = await fetch(`http://localhost:5153/api/ajanlatok?osszeg=${osszeg}&kamat=${kamat}`, {
+    const response = await fetch('http://localhost:5153/api/ajanlatok?osszeg=' + osszeg + '&kamat=' + kamat, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
-        },
-        mode: 'cors'  
-    });
+            'Content-Type': 'application/json'
+        }
+    });    
 
     if (response.ok) {
         const data = await response.json();
@@ -19,7 +18,7 @@ document.getElementById('kalkulatorForm').addEventListener('submit', async (e) =
 
         data.forEach(ajanlat => {
             let szin = 'bg-success text-white';
-            if (ajanlat.HaviTorleszto > 300000) szin = 'bg-danger text-white';
+            if (ajanlat.HaviTorleszto > 500000) szin = 'bg-danger text-white';
             else if (ajanlat.HaviTorleszto > 150000) szin = 'bg-warning';
 
             const card = `
